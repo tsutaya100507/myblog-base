@@ -1,0 +1,42 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: "app-api_development"
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - db-volume:/var/lib/mysql
+    ports:
+      - '3306:3306'
+  web:
+    build: 
+      context: ./app-api
+      dockerfile: Dockerfile
+    image: app-api
+    container_name: app-api
+    hostname: app-api
+    command: bundle exec rails s -p 8000 -b '0.0.0.0'
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+  front:
+    build:
+      context: ./app-front
+      dockerfile: Dockerfile
+    privileged: true
+    volumes:
+      - front-volume:/app-front
+      - node_modules:/app-front/node_modules
+    ports:
+      - 3000:3000
+    container_name: app-front
+    tty: true
+
+volumes:
+  front-volume:
+  db-volume:
+  node_modules:
