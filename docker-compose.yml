@@ -21,6 +21,8 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    volumes:
+      - ./app-api:/app-api
     tty: true
     stdin_open: true
   front:
@@ -29,6 +31,7 @@ services:
       dockerfile: Dockerfile
     privileged: true
     volumes:
+      - ./app-front:/app-front
       - front-volume:/app-front
       - node_modules:/app-front/node_modules
     ports:
