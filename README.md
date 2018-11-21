@@ -25,3 +25,14 @@ docker-compose down
 docker-compose run rails bundle install
 ```
 - schemaファイルの追加・変更後(ridgepole)
+```
+docker-compose runweb bundle exec ridgepole --config config/database.yml --file db/schemas/Schemafile -E development --apply
+```
+- コンテナに入る
+```
+docker-compose run コンテナ名　bash
+```
+- コンテナ一覧
+```
+docker ps
+```
