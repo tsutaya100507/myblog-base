@@ -25,6 +25,7 @@ services:
       - ./app-api:/app-api
     tty: true
     stdin_open: true
+
   front:
     build:
       context: ./app-front
@@ -38,6 +39,7 @@ services:
       - 3000:3000
     container_name: app-front
     tty: true
+    stdin_open: true
 
 volumes:
   front-volume:
