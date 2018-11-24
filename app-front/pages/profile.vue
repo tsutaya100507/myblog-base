@@ -1,6 +1,9 @@
 <template>
   <div>
-    <header>profile</header>
+    <header>
+      <nuxt-link to="/">back to TOP</nuxt-link>
+      <h1>profile</h1>
+    </header>
     <div class="wrapper">
     <div class="intro-card">
       <div class="name">Tatsuya Ichikawa</div>
@@ -42,12 +45,52 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   header {
-    text-align: center;
-    font-size: 40px;
+    position: relative;
     padding: 20px;
     box-shadow: 0 0 15px rgba(0,0,0,.1);
+  }
+
+  header > a {
+    /* position: absolute;
+    top: 35px;
+    left: 20px; */
+    font-size: 15px;
+    color: black;
+  }
+
+  header > a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color .5s;
+}
+header > a:hover {
+  color: #1F7392;
+
+}
+
+header > a::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #1F7392;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform .3s;
+  color: #1F7392;
+}
+header > a:hover::after {
+  transform: scale(1, 1);
+}
+
+  header > h1 {
+    text-align: center;
+    font-size: 40px;
   }
 
   .wrapper {
@@ -143,4 +186,13 @@ export default {
       width: 40%;
     }
   }
+
+  .page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+  }
+
+  .page-enter, .page-leave-to {
+    opacity: 0;
+  }
+
 </style>
