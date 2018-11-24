@@ -1,8 +1,11 @@
 <template>
-  <div>
-    <img src="/logo_transparent.png" alt="Tatsuya_Ichikawa">
-    <div v-for="post in posts" :key=post.id class="post-cards">
-      <PostCard :post="post"/>
+  <div class="wrapper">
+    <div class="logo">
+      <img src="/logo_transparent.png" alt="Tatsuya_Ichikawa">
+      <a class="profile">profile</a>
+    </div>
+    <div class="cards-wrapper">
+        <PostCard :post="post" v-for="post in posts" :key=post.id class="post-card"/>
     </div>
   </div>
 </template>
@@ -32,17 +35,71 @@
 </script>
 
 <style scoped>
-  div {
+  .wrapper {
+    position: relative;
     text-align: center;
+    background-color: #F9F9F9;
+  }
+
+  .profile {
+    display: block;
+    border: 4px solid #1F7392;
+    background-color: #ffffff;
+    font-size: 24px;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-align: center;
+    color: #1F7392;
+    transition: .4s;
+  }
+
+  .profile:hover {
+    background: #1F7392;
+    color: white;
+  }
+
+  .profile:hover {
+    opacity: .8;
+  }
+
+  .cards-wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 60px;
   }
 
   img {
-    margin-top: -100px;
-    width: 700px;
+    /* margin-top: -150px; */
+    width: 100%;
+    max-width: 650px;
     height: auto;
   }
 
-  .post-cards {
-    margin-top: -100px;
+  .post-card {
+    width: 25%;
+    min-width: 300px;
   }
+
+  @media screen and (max-width:680px) {
+    img {
+      width: 100%;
+      /* margin-top: -80px; */
+    }
+
+    .cards-wrapper {
+      /* margin-top: -100px; */
+    }
+  }
+
+  @media screen and (max-width:899px) {
+    .post-card {
+      width: 50%;
+    }
+  }
+
 </style>
