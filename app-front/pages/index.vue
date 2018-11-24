@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="logo">
       <img src="/logo_transparent.png" alt="Tatsuya_Ichikawa">
-      <a class="profile">profile</a>
+      <nuxt-link to="/profile" class="profile">profile</nuxt-link>
     </div>
     <div class="cards-wrapper">
         <PostCard :post="post" v-for="post in posts" :key=post.id class="post-card"/>
