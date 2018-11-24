@@ -1,8 +1,10 @@
 <template>
   <div class="wrapper">
     <div class="logo">
-      <img src="/logo_transparent.png" alt="Tatsuya_Ichikawa">
-      <a class="profile">profile</a>
+      <img src="/logo_transparent.png" alt="Tatsuya_Ichikawa"/>
+      <transition name="fade">
+      <nuxt-link to="/profile" class="profile">profile</nuxt-link>
+      </transition>
     </div>
     <div class="cards-wrapper">
         <PostCard :post="post" v-for="post in posts" :key=post.id class="post-card"/>
@@ -30,7 +32,7 @@
     },
     mounted () {
       this.updateBlogs()
-    }
+    },
   }
 </script>
 
@@ -74,7 +76,6 @@
   }
 
   img {
-    /* margin-top: -150px; */
     width: 100%;
     max-width: 650px;
     height: auto;
@@ -88,11 +89,6 @@
   @media screen and (max-width:680px) {
     img {
       width: 100%;
-      /* margin-top: -80px; */
-    }
-
-    .cards-wrapper {
-      /* margin-top: -100px; */
     }
   }
 
@@ -101,5 +97,15 @@
       width: 50%;
     }
   }
+
+    .page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+  }
+
+  .page-enter, .page-leave-to {
+    opacity: 0;
+  }
+
+  
 
 </style>
