@@ -15,7 +15,10 @@ export default {
 <style scoped>
   .wrapper {
     display: flex;
+    z-index: 100;
     flex-direction: column;
+    position: fixed;
+    left: 0;
     width: 200px;
     height: 100vh;
     padding-top: 50px;
