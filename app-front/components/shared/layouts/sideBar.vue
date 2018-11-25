@@ -1,30 +1,24 @@
 <template>
   <div class="wrapper">
     <div v-for="link in links" :key=link.name>
-    <nuxt-link to=link.path class="panel">{{link.name}}</nuxt-link>
+    <nuxt-link :to="link.path" class="panel">{{link.name}}</nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-      props: [ 'links' ],
-  // data() {
-  //   return {
-  //     links: [
-  //       { name: "Dashbord", path: "/admin/index" },
-  //       { name: "Dashbord", path: "/admin/newpost" },
-  //       { name: "Dashbord", path: "/admin/allposts" },
-  //     ]
-  //   }
-  // }
+  props: [ 'links' ],
 }
 </script>
 
-<style>
+<style scoped>
   .wrapper {
+    display: flex;
+    flex-direction: column;
     width: 200px;
     height: 100vh;
+    padding-top: 50px;
     box-shadow: 0 0 15px rgba(0,0,0,.1);
   }
 
