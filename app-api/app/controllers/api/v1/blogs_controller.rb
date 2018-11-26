@@ -3,7 +3,6 @@ module Api
     class BlogsController < ApplicationController
       def index
         blogs = Blog.all
-        # render json: { status: 'SUCCESS', message: 'loaded blogs', data: blogs}, status: :ok
         render json: blogs
       end
 
@@ -14,6 +13,11 @@ module Api
         else
           render json: "fail to blog.\n", status: 500
         end          
+      end
+
+      def destroy
+        blog = Blog.find(params[:id])
+        blog.destroy
       end
 
       private
