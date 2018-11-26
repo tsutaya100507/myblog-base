@@ -36,6 +36,7 @@ module.exports = {
       }
     }
   },
+  plugins: [ {src: '~/plugins/mavoneditor.js', ssr: false } ],
   modules: [
     '@nuxtjs/vuetify',
     '@nuxtjs/axios',
