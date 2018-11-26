@@ -19,12 +19,11 @@
             label="Title"
             required
           ></v-text-field>
-          <!-- todo: markdownエディタに書き換え -->
-          <v-text-field
-            v-model="body"
-            label="Body"
-            required
-          ></v-text-field>
+          <no-ssr>
+          <div id="editor">
+            <mavon-editor style="height: 100%" language="en" v-model="value"></mavon-editor>
+          </div>
+          </no-ssr>
           <v-btn
             :disabled="!valid"
             @click="submit"
@@ -39,11 +38,21 @@
 <script>
   import AdminHeader from "~/components/shared/layouts/adminHeader.vue";
   import SideBar from "~/components/shared/layouts/sideBar.vue";
+  // import MavonEditor from "~/components/markdown.vue";
+
+
+import { mavonEditor } from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
+
+
 
   export default {
+    name: 'editor',
     components: {
       SideBar,
       AdminHeader,
+      mavonEditor,
     },
     data() {
       return {
@@ -63,7 +72,7 @@
           v => !!v || 'title is required',
           v => (v && v.length <= 10) || 'title must be less than 10 characters'
         ],
-        body: '',
+        value: '',
         bodyRules: [
           v => !!v || 'body is required',
         ],
@@ -75,8 +84,12 @@
           await this.$axios.$post('/v1/blogs', {
             slug: this.slug,
             title: this.title,
-            body: this.body,
-          })
+            body: this.value,
+          }).then((response) => {
+          this.slug = "",
+          this.title = "",
+          this.value = ""
+        })
           window.location.href = '/admin/allposts'
         }
       },
@@ -101,5 +114,11 @@
     margin-top: 50px;
     margin-left: 200px;
     padding: 20px;
+  }
+
+  #editor {
+    margin: 40px auto;
+    width: 100%;
+    height: 580px;
   }
 </style>

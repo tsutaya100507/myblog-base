@@ -9,7 +9,7 @@
         <a href="" class="post-title">
           <h1>{{ post.title }}</h1>
         </a>
-          <div class="post-body">{{ post.body }}</div>
+          <!-- <div class="post-body">{{ post.body }}</div> -->
           <div class="post-createdat">{{ post.created_at }}</div>
       </div>
     </header>
