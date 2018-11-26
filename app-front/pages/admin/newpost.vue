@@ -7,14 +7,14 @@
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field
             v-model="slug"
-            :rules="nameRules"
+            :rules="slugRules"
             :counter="10"
             label="Slug"
             required
           ></v-text-field>
           <v-text-field
             v-model="title"
-            :rules="nameRules"
+            :rules="titleRules"
             :counter="10"
             label="Title"
             required
@@ -22,7 +22,6 @@
           <!-- todo: markdownエディタに書き換え -->
           <v-text-field
             v-model="body"
-            :rules="nameRules"
             label="Body"
             required
           ></v-text-field>
@@ -56,31 +55,29 @@
         valid: true,
         slug: '',
         slugRules: [
-          v => !!v || 'Name is required',
-          v => (v && v.length <= 10) || 'Name must be less than 10 characters'
+          v => !!v || 'slug is required',
+          v => (v && v.length <= 10) || 'slug must be less than 10 characters'
         ],
         title: '',
         titleRules: [
-          v => !!v || 'Name is required',
-          v => (v && v.length <= 10) || 'Name must be less than 10 characters'
+          v => !!v || 'title is required',
+          v => (v && v.length <= 10) || 'title must be less than 10 characters'
         ],
         body: '',
         bodyRules: [
-          v => !!v || 'Name is required',
-          // v => (v && v.length <= 10) || 'Name must be less than 10 characters'
+          v => !!v || 'body is required',
         ],
       }
     },
     methods: {
-      submit () {
+      async submit () {
         if (this.$refs.form.validate()) {
-          // Native form submission is not yet supported
-          axios.post('', {
-            name: this.name,
-            email: this.email,
-            select: this.select,
-            checkbox: this.checkbox
+          await this.$axios.$post('/v1/blogs', {
+            slug: this.slug,
+            title: this.title,
+            body: this.body,
           })
+          window.location.href = '/admin/allposts'
         }
       },
       clear () {
