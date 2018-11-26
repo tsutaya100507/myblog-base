@@ -19,13 +19,11 @@
             label="Title"
             required
           ></v-text-field>
-          <!-- todo: markdownエディタに書き換え -->
-          <!-- <div id="main">
-            <MavonEditor v-model="body" @keydown="console.log(body)"/>
-          </div> -->
+          <no-ssr>
           <div id="editor">
             <mavon-editor style="height: 100%" language="en" v-model="value"></mavon-editor>
           </div>
+          </no-ssr>
           <v-btn
             :disabled="!valid"
             @click="submit"
@@ -87,7 +85,11 @@ import 'mavon-editor/dist/css/index.css'
             slug: this.slug,
             title: this.title,
             body: this.value,
-          })
+          }).then((response) => {
+          this.slug = "",
+          this.title = "",
+          this.value = ""
+        })
           window.location.href = '/admin/allposts'
         }
       },

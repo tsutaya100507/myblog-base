@@ -9,7 +9,7 @@
           <tr>
             <th>Post</th>
             <th class="table-title">Title</th>
-            <th class="table-body">Text</th>
+            <!-- <th class="table-body">Text</th> -->
             <th class="table-category">Category</th>
             <th class="table-published">Published</th>
             <th class="table-published">Data</th>
@@ -22,7 +22,7 @@
           <!-- <nuxt-link to="/"> -->
             <td>image</td>
             <td class="table-title">{{ post.title }}</td>
-            <td class="table-body">{{ post.body }}</td>
+            <!-- <td class="table-body">{{ post.body }}</td> -->
             <td class="table-category">category</td>
             <td class="table-published">pablished</td>
             <td class="table-data">{{ post.created_at }}</td>
