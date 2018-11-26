@@ -18,7 +18,7 @@
           </thead>
         <!-- <div :post="post" v-for="post in posts" :key=post.name class="post"> -->
           <tbody>
-          <tr :post="post" v-for="post in posts" :key=post.title class="post" onclick="window.location='/'">
+          <tr :post="post" v-for="post in posts" :key=post.title class="post">
           <!-- <nuxt-link to="/"> -->
             <td>image</td>
             <td class="table-title">{{ post.title }}</td>
@@ -26,7 +26,7 @@
             <td class="table-category">category</td>
             <td class="table-published">pablished</td>
             <td class="table-data">{{ post.created_at }}</td>
-            <td class="table-action">delete</td>
+            <td class="table-action" @click="deletePost(post.id)">delete</td>
           <!-- </nuxt-link> -->
           </tr>
           </tbody>
@@ -58,6 +58,15 @@
     methods: {
       async updateBlogs() {
         this.posts = await this.$axios.$get('/v1/blogs')
+      },
+      async deletePost(id) {
+        if(window.confirm('本当に削除しますか？')) {
+          await this.$axios.$delete(`/v1/blogs/${id}`)
+          this.updateBlogs()
+        }
+        else {
+          window.alert('キャンセルしました。')
+        }
       }
     },
     mounted () {
