@@ -81,7 +81,7 @@ import 'mavon-editor/dist/css/index.css'
     methods: {
       async submit () {
         if (this.$refs.form.validate()) {
-          await this.$axios.$post('/v1/blogs', {
+          await this.$axios.$post('https://my-blog-portfolio.herokuapp.com/api/v1/blogs', {
             slug: this.slug,
             title: this.title,
             body: this.value,

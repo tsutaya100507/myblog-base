@@ -43,9 +43,9 @@ module.exports = {
   ],
   axios: {
     // host: 'localhost',
-    host: 'https://my-blog-portfolio.herokuapp.com',
+    // host: 'https://my-blog-portfolio.herokuapp.com',
     // port: 8000,
-    prefix: '/api'
+    // prefix: '/api'
   }
 }
 

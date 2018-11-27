@@ -57,7 +57,7 @@
     },
     methods: {
       async updateBlogs() {
-        this.posts = await this.$axios.$get('/v1/blogs')
+        this.posts = await this.$axios.$get('https://my-blog-portfolio.herokuapp.com/api/v1/blogs')
       },
       async deletePost(id) {
         if(window.confirm('本当に削除しますか？')) {
