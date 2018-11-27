@@ -42,8 +42,9 @@ module.exports = {
     '@nuxtjs/axios',
   ],
   axios: {
-    host: 'localhost',
-    port: 8000,
+    // host: 'localhost',
+    host: 'https://my-blog-portfolio.herokuapp.com',
+    // port: 8000,
     prefix: '/api'
   }
 }

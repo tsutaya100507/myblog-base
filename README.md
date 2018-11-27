@@ -36,3 +36,15 @@ docker-compose run コンテナ名　bash
 ```
 docker ps
 ```
+
+## 本番環境用コマンド
+### app-api(heroku)
+- herokuリポジトリへのプッシュ(rootから--prefixでディレクトリを指定してプッシュ)
+```
+git subtree push --prefix app-api heroku master 
+```
+
+- ridgepoleの適用
+```
+heroku run "bundle exec ridgepole -c config/database.for.heroku.ridgepole.yml  -E production -f db/schemas/Schemafile --apply"
+```
