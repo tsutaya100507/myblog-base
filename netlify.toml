@@ -1,0 +1,4 @@
+[build]
+  base    = "app-front"
+  publish = "app-front/dist"
+  command = "yarn generate"
