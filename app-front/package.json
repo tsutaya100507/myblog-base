@@ -15,6 +15,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/vuetify": "^0.4.3",
+    "cross-env": "^5.2.0",
     "mavon-editor": "^2.6.17",
     "nuxt": "^2.0.0"
   },
