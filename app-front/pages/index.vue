@@ -15,7 +15,6 @@
 <script>
   import PostCard from "~/components/postCard.vue";
 
-
   export default {
     components: {
       PostCard,
@@ -27,7 +26,7 @@
     },
     methods: {
       async updateBlogs() {
-        this.posts = await this.$axios.$get('https://my-blog-portfolio.herokuapp.com/api/v1/blogs')
+        this.posts = await this.$axios.$get(`${process.env.apiBaseUrl}/v1/blogs`)
       }
     },
     mounted () {

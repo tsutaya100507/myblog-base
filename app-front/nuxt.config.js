@@ -1,3 +1,6 @@
+const environment = process.env.NODE_ENV || "development"
+const envSet      = require(`./env/env.${environment}.js`)
+console.log(envSet)
 module.exports = {
   /*
   ** Headers of the page
@@ -41,9 +44,11 @@ module.exports = {
     '@nuxtjs/vuetify',
     '@nuxtjs/axios',
   ],
+  env: envSet,
   axios: {
+    baseURL: process.env.apiBaseUrl,
     // host: 'localhost',
-    // host: 'https://my-blog-portfolio.herokuapp.com',
+    // // host: 'https://my-blog-portfolio.herokuapp.com',
     // port: 8000,
     // prefix: '/api'
   }

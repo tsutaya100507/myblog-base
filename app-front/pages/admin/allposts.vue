@@ -18,7 +18,7 @@
           </thead>
         <!-- <div :post="post" v-for="post in posts" :key=post.name class="post"> -->
           <tbody>
-          <tr :post="post" v-for="post in posts" :key=post.title class="post">
+          <tr :post="post" v-for="post in posts" :key=post.id class="post">
           <!-- <nuxt-link to="/"> -->
             <td>image</td>
             <td class="table-title">{{ post.title }}</td>
@@ -57,11 +57,11 @@
     },
     methods: {
       async updateBlogs() {
-        this.posts = await this.$axios.$get('https://my-blog-portfolio.herokuapp.com/api/v1/blogs')
+        this.posts = await this.$axios.$get(`${process.env.apiBaseUrl}/v1/blogs`)
       },
       async deletePost(id) {
         if(window.confirm('本当に削除しますか？')) {
-          await this.$axios.$delete(`/v1/blogs/${id}`)
+          await this.$axios.$delete(`${process.env.apiBaseUrl}/v1/blogs/${id}`)
           this.updateBlogs()
         }
         else {
