@@ -57,11 +57,11 @@
     },
     methods: {
       async updateBlogs() {
-        this.posts = await this.$axios.$get('/v1/blogs')
+        this.posts = await this.$axios.$get(`${process.env.apiBaseUrl}/v1/blogs`)
       },
       async deletePost(id) {
         if(window.confirm('本当に削除しますか？')) {
-          await this.$axios.$delete(`/v1/blogs/${id}`)
+          await this.$axios.$delete(`${process.env.apiBaseUrl}/v1/blogs/${id}`)
           this.updateBlogs()
         }
         else {

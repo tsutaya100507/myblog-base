@@ -84,7 +84,7 @@ import 'mavon-editor/dist/css/index.css'
         if (this.processing) return
         this.processing = true
         if (this.$refs.form.validate()) {
-          await this.$axios.$post('/v1/blogs', {
+          await this.$axios.$post(`${process.env.apiBaseUrl}/v1/blogs`, {
             slug: this.slug,
             title: this.title,
             body: this.value,
