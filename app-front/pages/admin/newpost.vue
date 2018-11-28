@@ -25,8 +25,8 @@
           </div>
           </no-ssr>
           <v-btn
-            :disabled="!valid"
-            @click="submit"
+            :disabled="!valid, processing"
+            @click.prevent="submit"
           >submit</v-btn>
           <v-btn @click="clear">clear</v-btn>
         </v-form>
@@ -76,12 +76,15 @@ import 'mavon-editor/dist/css/index.css'
         bodyRules: [
           v => !!v || 'body is required',
         ],
+        processing: false,
       }
     },
     methods: {
       async submit () {
+        if (this.processing) return
+        this.processing = true
         if (this.$refs.form.validate()) {
-          await this.$axios.$post('https://my-blog-portfolio.herokuapp.com/api/v1/blogs', {
+          await this.$axios.$post('/v1/blogs', {
             slug: this.slug,
             title: this.title,
             body: this.value,
