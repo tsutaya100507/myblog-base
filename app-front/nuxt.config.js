@@ -1,6 +1,6 @@
 const environment = process.env.NODE_ENV || "development"
 const envSet      = require(`./env/env.${environment}.js`)
-
+console.log(envSet)
 module.exports = {
   /*
   ** Headers of the page
@@ -50,7 +50,7 @@ module.exports = {
     // host: 'localhost',
     // // host: 'https://my-blog-portfolio.herokuapp.com',
     // port: 8000,
-    prefix: '/api'
+    // prefix: '/api'
   }
 }
 
