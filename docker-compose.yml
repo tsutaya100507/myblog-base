@@ -11,7 +11,7 @@ services:
       - '3306:3306'
   web:
     build: 
-      context: ./app-api
+      context: ./myblog-api
       dockerfile: Dockerfile
     image: app-api
     container_name: app-api
@@ -22,17 +22,17 @@ services:
     depends_on:
       - db
     volumes:
-      - ./app-api:/app-api
+      - ./myblog-api:/app-api
     tty: true
     stdin_open: true
 
   front:
     build:
-      context: ./app-front
+      context: ./myblog-front
       dockerfile: Dockerfile
     privileged: true
     volumes:
-      - ./app-front:/app-front
+      - ./myblog-front:/app-front
       - front-volume:/app-front
       - node_modules:/app-front/node_modules
     ports:
